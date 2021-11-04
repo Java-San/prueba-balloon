@@ -5,13 +5,14 @@ const UsuarioSchema = Schema({
         type: String,
         required: [ true, 'El nombre es requerido' ]
     },
-    inicial: {
-        type: Number,
-        default: 10000
+    correo: {
+        type: String,
+        required: [ true, 'El correo es requerido' ],
+        unique: true
     },
     saldo: {
         type: Number,
-        default: 0
+        default: 10000
     }
 });
 
