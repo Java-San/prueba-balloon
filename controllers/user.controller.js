@@ -3,8 +3,6 @@ const Usuario = require('../models/user');
 
 // obtener todos los usuarios
 const getUsers = async ( req, res ) => {
-    console.log( 'get users' );
-
     const usuarios = await Usuario.find();
 
     res.json({
@@ -16,9 +14,9 @@ const getUsers = async ( req, res ) => {
 
 // crear un usuario
 const createUser = async ( req = request, res = response ) => {
-    const { nombre, correo } = req.body;
+    const { nombre, correo, saldo } = req.body;
 
-    const usuario = new Usuario( { nombre, correo } );
+    const usuario = new Usuario( { nombre, correo, saldo } );
 
     // guardamos el usuario creado
     await usuario.save();
@@ -32,8 +30,6 @@ const createUser = async ( req = request, res = response ) => {
 
 // editar datos del usuario
 const editUser = async ( req, res ) => {
-    console.log( 'edit user' );
-
     const { id } = req.params;
     const { _id, saldo, ...resto } = req.body;
 
@@ -48,7 +44,6 @@ const editUser = async ( req, res ) => {
 
 // eliminar un usuario
 const deleteUser = async ( req, res ) => {
-    console.log( 'delete user' );
     const { id } = req.params;
 
     const usuario = await Usuario.findByIdAndDelete( id );

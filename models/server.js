@@ -1,5 +1,5 @@
 const express = require('express');
-const hbs = require('hbs');
+const cors = require('cors')
 const { dbConnection } = require('../db/config.db.js');
 
 class Server{
@@ -24,12 +24,11 @@ class Server{
     };
 
     middleware(){
+        this.app.use( cors() );
+
         //  parseamos
         this.app.use( express.json() );
         
-        // handlebars
-        //this.app.set( 'view engine', 'hbs' );
-
         // servimos la carpeta publica
         this.app.use( express.static('public') )
     };
