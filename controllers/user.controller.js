@@ -39,7 +39,11 @@ const editUser = async ( req, res ) => {
 
     const usuario = await Usuario.findByIdAndUpdate( id, resto );
 
-    res.json( usuario );
+    res.json( {
+        status: 200,
+        message: 'Usuario editado correctamente',
+        data: []
+    } );
 };
 
 // eliminar un usuario
@@ -49,7 +53,11 @@ const deleteUser = async ( req, res ) => {
 
     const usuario = await Usuario.findByIdAndDelete( id );
 
-    res.json(usuario)
+    res.json({
+        status: 200,
+        message: 'Usuario eliminado',
+        data: []
+    })
 };
 
 module.exports = {
